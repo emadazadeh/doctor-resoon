@@ -36,3 +36,6 @@ The managed environment did not expose the required `cua_repl.js` browser contro
 ## Release
 
 The owner requested a preview before deployment. The preview was shown in the conversation before preparing publication. Production remains the existing Cloudflare Worker `doctor-resoon1`, deployed through the existing GitHub integration. Publish the tested source there first, verify the real domain and team assets, then synchronize and publish the exact same source/build to the original managed Site without changing its identity, audience or database binding. No database migration is needed for this UI change.
+
+
+During publication the hosting provider changed the managed origin to `https://doctor-resoon.behzadsrezaei.chatgpt.site`; the previous managed origin now redirects there at the platform layer. Both provider-returned origins are explicitly retained in the canonical redirect allowlist so public page traffic continues to reach `https://doctorreson.ir`. The extra regression test covers both origins, including preserved verification and API endpoints. The custom production domain and Site project ID remain unchanged.

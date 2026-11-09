@@ -1,9 +1,11 @@
 // Owner-confirmed production domain. Never derive SEO identity from request headers.
 export const primaryOrigin = "https://doctorreson.ir";
 export const legacyOrigin = "https://doctor-resoon.cometolive34.chatgpt.site";
+// Both origins were returned by the hosting provider for this same Site.
+export const managedOrigins = [legacyOrigin, "https://doctor-resoon.behzadsrezaei.chatgpt.site"] as const;
 export const googleVerificationPath = "/google5b4ed26796eb34ea.html";
 const primaryHost = new URL(primaryOrigin).hostname;
-const alternateHosts = new Set([new URL(legacyOrigin).hostname, `www.${primaryHost}`]);
+const alternateHosts = new Set([...managedOrigins.map(origin => new URL(origin).hostname), `www.${primaryHost}`]);
 
 export function canonicalRedirectUrl(request: Pick<Request, "url" | "method">): string | null {
   if (request.method !== "GET" && request.method !== "HEAD") return null;

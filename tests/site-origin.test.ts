@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { canonicalRedirectUrl, googleVerificationPath, legacyOrigin, primaryOrigin } from "../lib/site-origin.ts";
+import { canonicalRedirectUrl, googleVerificationPath, legacyOrigin, managedOrigins, primaryOrigin } from "../lib/site-origin.ts";
 import { pageMetadata, pageSchema, publicPaths, site } from "../lib/site.ts";
 
 test("every public page has canonical and sharing URLs on the owner-confirmed primary domain", () => {
@@ -33,4 +33,13 @@ test("crafted paths and lookalike hosts cannot create an external redirect or lo
   assert.equal(new URL(target).origin,primaryOrigin);
   assert.equal(canonicalRedirectUrl({url:"https://doctorreson.ir.evil.example/about",method:"GET"}),null);
   assert.equal(canonicalRedirectUrl({url:target,method:"GET"}),null);
+});
+
+
+test("both hosting-provider origins redirect public pages while retaining verification and API endpoints", () => {
+  for (const origin of managedOrigins) {
+    assert.equal(canonicalRedirectUrl({url:origin+"/about?utm_source=legacy",method:"GET"}),primaryOrigin+"/about?utm_source=legacy");
+    assert.equal(canonicalRedirectUrl({url:origin+googleVerificationPath,method:"GET"}),null);
+    assert.equal(canonicalRedirectUrl({url:origin+"/api/appointments",method:"POST"}),null);
+  }
 });
