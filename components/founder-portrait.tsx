@@ -1,11 +1,11 @@
-import { founder } from "@/lib/brand";
+import { founderProfilePortrait, type FounderPortraitSource } from "@/lib/brand";
 
-export default function FounderPortrait({ sizes, alt }: { sizes: string; alt: string }) {
+export default function FounderPortrait({ sizes, alt, portrait = founderProfilePortrait }: { sizes: string; alt: string; portrait?: FounderPortraitSource }) {
   return <>
-    <link rel="preload" as="image" type="image/avif" imageSrcSet={founder.portraitAvifSet} imageSizes={sizes} fetchPriority="high" />
+    <link rel="preload" as="image" type="image/avif" imageSrcSet={portrait.avifSet} imageSizes={sizes} fetchPriority="high" />
     <picture className="founder-responsive-picture">
-      <source type="image/avif" srcSet={founder.portraitAvifSet} sizes={sizes} />
-      <img src={founder.portrait} srcSet={founder.portraitSrcSet} sizes={sizes} alt={alt} width="1024" height="1280" loading="eager" fetchPriority="high" decoding="async" />
+      <source type="image/avif" srcSet={portrait.avifSet} sizes={sizes} />
+      <img src={portrait.src} srcSet={portrait.srcSet} sizes={sizes} alt={alt} width={portrait.width} height={portrait.height} loading="eager" fetchPriority="high" decoding="async" />
     </picture>
   </>;
 }

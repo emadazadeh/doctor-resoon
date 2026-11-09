@@ -26,3 +26,30 @@ export const founder = {
   portraitAvifSet: "/images/emad-azadeh-care-320.avif 320w, /images/emad-azadeh-care-480.avif 480w, /images/emad-azadeh-care-768.avif 768w, /images/emad-azadeh-care-1024.avif 1024w",
   portraitCaption: "پرترهٔ ویرایش‌شده با هوش مصنوعی بر پایهٔ عکس دکتر عماد آزاده.",
 } as const;
+
+
+export type FounderPortraitSource = {
+  src: string;
+  srcSet: string;
+  avifSet: string;
+  width: number;
+  height: number;
+};
+
+export const founderProfilePortrait: FounderPortraitSource = {
+  src: founder.portrait,
+  srcSet: founder.portraitSrcSet,
+  avifSet: founder.portraitAvifSet,
+  width: 1024,
+  height: 1280,
+};
+
+// The owner's selected desk portrait, already optimized for the team cards.
+// Reuse these assets so the hero and team photo share the browser cache.
+export const founderHeroPortrait: FounderPortraitSource = {
+  src: "/images/team/emad-azadeh-640.webp",
+  srcSet: "/images/team/emad-azadeh-320.webp 320w, /images/team/emad-azadeh-640.webp 640w, /images/team/emad-azadeh-960.webp 960w",
+  avifSet: "/images/team/emad-azadeh-320.avif 320w, /images/team/emad-azadeh-640.avif 640w, /images/team/emad-azadeh-960.avif 960w",
+  width: 960,
+  height: 1200,
+};

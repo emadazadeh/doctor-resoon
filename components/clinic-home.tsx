@@ -1,6 +1,6 @@
 import { services, faqs } from "@/lib/clinic-data";
 import { pageSchema, site } from "@/lib/site";
-import { contact, founder } from "@/lib/brand";
+import { contact, founder, founderHeroPortrait } from "@/lib/brand";
 import { upcomingServices } from "@/lib/upcoming-services";
 import { Icon, type IconName } from "./icons";
 import { BookingButton } from "./booking-provider";
@@ -24,7 +24,7 @@ export default function ClinicHome() {
         <div className="container hero-grid">
           <div className="hero-heading"><div className="eyebrow"><span className="tiny-line" />دکتر رسون · سلامت، با توجهی که شایستهٔ شماست</div><h1 id="hero-title">مراقبت حرفه‌ای،<br /><span className="word-gold">متناسب با شما.</span></h1></div>
           <figure className="hero-visual">
-            <div className="hero-image-frame"><FounderPortrait sizes="(max-width: 640px) min(330px, 82vw), (max-width: 900px) 42vw, 440px" alt={`${founder.name}، ${founder.role}؛ پرترهٔ ویرایش‌شده با هوش مصنوعی`} /></div>
+            <div className="hero-image-frame"><FounderPortrait portrait={founderHeroPortrait} sizes="(max-width: 640px) min(330px, 82vw), (max-width: 900px) 42vw, 440px" alt={`${founder.name}، ${founder.role}؛ پرترهٔ ویرایش‌شده با هوش مصنوعی`} /></div>
             <div className="image-card"><span className="image-card-icon"><Icon name="stethoscope" size={28} /></span><div><a href={founder.path}>{founder.name}</a><small>{founder.role}</small></div><a className="portrait-about" href={founder.path} aria-label="آشنایی با دکتر عماد آزاده"><Icon name="arrow" size={20} /></a></div>
             <figcaption className="concept-caption">پرترهٔ دکتر عماد آزاده؛ ویرایش با هوش مصنوعی.</figcaption>
           </figure>
