@@ -16,7 +16,7 @@ export const publicPaths = ["/", "/services", "/calorie-counter", ...services.ma
 
 // Actual editorial updates, not build time. Leave undated pages out of this map.
 export const pageUpdatedAt: Record<string, string> = {
-  "/": "2026-10-31",
+  "/": "2026-11-09",
   "/calorie-counter": "2026-10-31",
   "/privacy": "2026-10-31",
   "/contact": "2026-10-28",
